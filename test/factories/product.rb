@@ -5,5 +5,6 @@ FactoryGirl.define do
   quantity 1
   expiration_date Date.today
   product_type 'vegetable'
+  unit 'piece'
   end
 end

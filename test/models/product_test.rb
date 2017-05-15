@@ -71,4 +71,17 @@ class ProductTest < ActiveSupport::TestCase
     third_product = FactoryGirl.create(:product, product_type: 'Vegetable')
     assert_instance_of String, 'Vegetable'
   end
+
+  # test na pole unit
+  test 'should require unit' do
+    error_messages
+    # assert @product.errors.empty?
+    assert_includes @product.errors[:unit],"can't be blank"
+  end
+
+  test 'should check if unit is a string' do
+    first_unit = FactoryGirl.create(:product, unit: 'test unit')
+    assert_instance_of String, "test unit"
+  end
+
 end
