@@ -18,18 +18,20 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   #
-  # test "should create product" do
-  #   assert_difference('Product.count') do
-  #     post products_path, params: { product: { product_name: @product.product_name, quantity: @product.quantity, product_type: @product.product_type } }
-  #   end
+  test "should create product" do
+
+    assert_difference('Product.count') do
+      post products_url, params: { product: { product_name: 'Mozarella', quantity: '1', expiration_date: '2017-05-30', product_type: 'dairy' } }
+    end
+
+    assert_redirected_to product_path(Product.last)
+  end
+
   #
-  #   assert_redirected_to product_path(Product.last)
-  # end
-  #
-  # test "should show product" do
-  #   get product_url(@product)
-  #   assert_response :success
-  # end
+  test "should show product" do
+    get product_url(1)
+    assert_response :success
+  end
   #
   # test "should get edit" do
   #   get edit_product_url(@product)
