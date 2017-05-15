@@ -1,0 +1,48 @@
+<%= form_with(model: @product, local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= radio_button_tag(:storage_name, "Fridge") %>
+    <%= label_tag(:storage_name, "Fridge") %>
+    <%= radio_button_tag(:storage_name, "Refrigerator") %>
+    <%= label_tag(:storage_name, "Refrigerator") %>
+    <%= radio_button_tag(:storage_name, "Pantry") %>
+    <%= label_tag(:storage_name, "Pantry") %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :product_name %><br>
+    <%= form.text_area :product_name, id: :product_name %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :quantity %><br>
+    <%= form.text_area :quantity, id: :quantity %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :product_type %><br>
+    <%= form.text_area :product_type, id: :product_type %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :expiration_date %><br>
+    <%= form.date_field :expiration_date, id: :expiration_date %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
