@@ -31,7 +31,7 @@ class ProductTest < ActiveSupport::TestCase
   #   assert_includes error_messages,["Product name can't be blank", "Product name is too short (minimum is 3 characters)"]
   #   @product.product_name = "a" * 5
   #   @product.valid?
-  #   assert_includes error_messages,["Product name can't be blank", "Product name is too short (minimum is 3 characters)"]
+  #   assert_includes @product.errors[:product_name], ["Product name can't be blank", "Product name is too short (minimum is 3 characters)"]
   # end
 
   # testy na pole quantity
@@ -57,6 +57,18 @@ class ProductTest < ActiveSupport::TestCase
   test 'date cannot be in the past' do
     @product.expiration_date = 1.month.ago
     @product.valid?
-    assert @product.errors[:expiration_date], "can't be in the past"
+    assert_equal @product.errors[:expiration_date], ["can't be in the past"]
+  end
+
+  # testy na pole product_type
+  test 'should require product type' do
+    error_messages
+    # assert @product.errors.empty?
+    assert_includes @product.errors[:product_type],"can't be blank"
+  end
+
+  test 'should ckeck if product type is a string' do
+    third_product = FactoryGirl.create(:product, product_type: 'Vegetable')
+    assert_instance_of String, 'Vegetable'
   end
 end
