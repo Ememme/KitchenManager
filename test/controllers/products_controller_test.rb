@@ -29,15 +29,17 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   #
   test "should show product" do
-    get product_url(1)
+    first_show = FactoryGirl.create(:product)
+    get product_url(first_show)
     assert_response :success
   end
   #
-  # test "should get edit" do
-  #   get edit_product_url(@product)
-  #   assert_response :success
-  # end
-  #
+  test "should get edit" do
+    first_edit_product = FactoryGirl.create(:product)
+    get edit_product_url(first_edit_product)
+    assert_response :success
+  end
+
   # test "should update product" do
   #   patch product_url(@product), params: { product: { email: @product.email, name: @product.name } }
   #   assert_redirected_to product_url(@product)
