@@ -12,12 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= radio_button_tag(:storage_name, "Fridge") %>
     <%= label_tag(:storage_name, "Fridge") %>
-    <%= radio_button_tag(:storage_name, "Refrigerator") %>
+    <%= radio_button_tag(:storage_name, "Fridge") %>
     <%= label_tag(:storage_name, "Refrigerator") %>
-    <%= radio_button_tag(:storage_name, "Pantry") %>
+    <%= radio_button_tag(:storage_name, "Refrigerator") %>
     <%= label_tag(:storage_name, "Pantry") %>
+    <%= radio_button_tag(:storage_name, "Pantry") %>
+
   </div>
 
   <br>
@@ -32,7 +33,7 @@
   </div>
   <div class="field">
     <%= form.label :unit %><br>
-    <%= form.text_area :unit, id: :unit %>
+    <%= form.select(:unit, options_for_select([['piece',1],['g',2],['kg',3],['ml',4],['l',5],['bottle',6]])) %>
   </div>
 
   <br>

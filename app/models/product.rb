@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   # scope :expiration_date { order('expiration_date ASC') }
   belongs_to :user
-  belongs_to :storage
+  # belongs_to :storage
 
   validates :product_name, presence: true, length: { minimum: 3 }
   validates :quantity, numericality: true

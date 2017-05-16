@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  # after_update :low_stock_info #to do
   before_action :authenticate_user!
   before_action :set_product, only: [:edit, :update, :destroy]
 
@@ -53,7 +54,7 @@ class ProductsController < ApplicationController
   end
 
   def add_to_fridge
-    
+
   end
 
   def low_stock_info
