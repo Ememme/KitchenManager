@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  # scope :expiration_date { order('expiration_date ASC') }
   belongs_to :user
   belongs_to :storage
 

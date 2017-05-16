@@ -52,6 +52,10 @@ class ProductsController < ApplicationController
     @product = current_user.products.find(params[:id])
   end
 
+  def add_to_fridge
+    
+  end
+
   def low_stock_info
     if @product.quantity.zero?
       shopping_list = []
