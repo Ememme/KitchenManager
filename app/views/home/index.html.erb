@@ -1,4 +1,8 @@
 <h1>Welcome to KitchenManager</h1>
 <% if user_signed_in? %>
   <%= link_to 'Your stock info', products_path %>
+  <br>
+
+
+  <%= link_to 'Your Fridge', products_path(:scope => 'fridge') %> | <%= link_to 'Your Refrigerator', products_path(:scope => 'refrigerator') %> |<%= link_to 'Your Pantry', (:scope => 'pantry') %>
 <% end %>
