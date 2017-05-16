@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
+  belongs_to :user
   # belongs_to :storage
+
   validates :product_name, presence: true, length: { minimum: 3 }
   validates :quantity, numericality: true
   validates :product_type, presence: true

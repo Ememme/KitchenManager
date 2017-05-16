@@ -1,4 +1,4 @@
 class Storage < ApplicationRecord
   # has_many :products
-  belongs_to :user
+  # belongs_to :suser
 end
