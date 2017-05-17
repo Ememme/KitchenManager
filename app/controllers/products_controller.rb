@@ -24,6 +24,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = current_user.products.find(params[:id])
+    # @soon_expires = current_user.products.where(expiration_date)
+    @vege = current.user.products.where(product_type: 'vege').all
+    # @team_goals_home = Game.where(team_home_id: params[:id].to_i).all
   end
 
   def edit
