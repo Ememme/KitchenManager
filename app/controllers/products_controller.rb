@@ -2,20 +2,22 @@ class ProductsController < ApplicationController
   # after_update :low_stock_info #to do
   before_action :authenticate_user!
   before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :set_storage
 
   def index
     @products = current_user.products.all
   end
 
   def new
-    @product = current_user.products.new
+    @storage = current_user.storages.find(params[:storage_id])
+    @product = @storage.products.new
   end
 
   def create
-    @product = current_user.products.new(product_params)
+    @product = @storage.products.new(product_params)
       if @product.save
         flash[:notice] = 'Product was added.'
-        redirect_to products_path
+        redirect_to storage_products_path(storage)
       else
         flash[:error] = 'Product cannot be saved'
         render :new
@@ -25,8 +27,6 @@ class ProductsController < ApplicationController
   def show
     @product = current_user.products.find(params[:id])
     # @soon_expires = current_user.products.where(expiration_date)
-    @vege = current.user.products.where(product_type: 'vege').all
-    # @team_goals_home = Game.where(team_home_id: params[:id].to_i).all
   end
 
   def edit
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to products_path, notice: 'Product was successfully updated.'
+      redirect_to storage_products_path(storage), notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -43,21 +43,23 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     flash[:notice] = "Product #{@product.product_name} has been deleted."
-    redirect_to products_path
+    redirect_to storage_product_path(storage, product)
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :quantity, :unit, :expiration_date, :product_type)
+    params.require(:product).permit(:product_name, :quantity, :expiration_date)
   end
 
   def set_product
+
     @product = current_user.products.find(params[:id])
+
   end
 
-  def add_to_fridge
-
+  def set_storage
+    @storage = current_user.storages.find(params[:storage_id])
   end
 
   def low_stock_info

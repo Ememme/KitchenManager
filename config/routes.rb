@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :storage do
+  resources :storages do
     resources :products
   end
 
