@@ -12,8 +12,8 @@ class User < ApplicationRecord
   private
 
   def add_default_storage_type
-    Storage.create(storage_name: 'fridge', user_id: self.id)
-    Storage.create(storage_name: 'refrigerator', user_id: self.id)
-    Storage.create(storage_name: 'pantry', user_id: self.id)
+    Storage.create(storage_name: 'Fridge', user_id: self.id)
+    Storage.create(storage_name: 'Refrigerator', user_id: self.id)
+    Storage.create(storage_name: 'Pantry', user_id: self.id)
   end
 end

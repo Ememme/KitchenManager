@@ -1,8 +1,8 @@
 <h1>Welcome to KitchenManager</h1>
 <% if user_signed_in? %>
-  <%= link_to 'Your stock info', storage_index_path %>
+  <%= link_to 'Add new storage place', new_storage_path %>
   <br>
 
 
-  <%= link_to 'Your Fridge', products_path %> | <%= link_to 'Your Refrigerator', products_path %> |<%= link_to 'Your Pantry', products_path %>
+  <%= link_to 'Your Fridge', @fridge %> | <%= link_to 'Your Refrigerator', @refrigerator %> |<%= link_to 'Your Pantry', @pantry %>
 <% end %>

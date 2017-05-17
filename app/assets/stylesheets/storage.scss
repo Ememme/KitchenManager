@@ -1,3 +1,49 @@
 // Place all the styles related to the Storage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: Helvetica, sans-serif;
+  color: #111111;
+}
+
+table {
+  width:800px;
+  border-bottom: 2px solid #111111;
+  border-top: 1px solid #999;
+}
+
+
+tr.head th {
+
+  color: #ffffff;
+  background-color: #90b4d6;
+  border-bottom: 2px solid #547ca0;
+  border-right: 1px solid #749abe;
+  border-top: 1px solid #90b4d6;
+  text-align: center;
+
+}
+th, td {
+  padding: 7px 10 px 10 px 10px;
+  border-spacing: 0px;
+  border-top: 1px solid #f1f8fe;
+  border-right: 1px solid #cbd2d8;
+  border-bottom: 1px solid #cbd2d8;
+}
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 90%;
+
+  text-align: left;
+  border: solid #0088dd;
+}
+
+tr.even {
+  background-color: #efefef;
+}
+
+tr:hover {
+  background-color: #c3e6e5;
+}
