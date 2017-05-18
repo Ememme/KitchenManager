@@ -12,8 +12,10 @@
     </thead>
 
     <tbody>
+
       <% @storages.each do |storage| %>
         <tr>
+          <td><%= link_to 'Look inside', storage_products_path(storage) %></td>
           <td><%= storage.storage_name %></td><td><%= link_to 'Add product', new_storage_product_path(storage) %></td>
 
 

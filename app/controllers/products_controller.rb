@@ -9,12 +9,14 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @types = ProductsType.all.map{ |type| [type.product_type, type.unit] }
+    @types = ProductType.all.map{|type| [type.product_type, type.unit] }
     @storage = current_user.storages.find(params[:storage_id])
     @product = @storage.products.new
   end
 
   def create
+    @types = ProductType.all.map{|type| [type.product_type, type.unit] }
+    @storage = current_user.storages.find(params[:storage_id])
     @product = @storage.products.new(product_params)
       if @product.save
         flash[:notice] = 'Product was added.'
@@ -50,7 +52,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :quantity, :expiration_date)
+    params.require(:product).permit(:product_name, :quantity, :expiration_date, :product_type_id)
   end
 
   def set_product

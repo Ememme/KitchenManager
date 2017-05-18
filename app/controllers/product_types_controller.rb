@@ -1,25 +1,25 @@
-class ProductsTypesController < ApplicationController
+class ProductTypesController < ApplicationController
 
   before_action :set_product_type, only: [:edit, :update, :destroy]
 
   def index
-    @product_type = ProductsType.all
+    @product_type = ProductType.all
   end
 
   def show
   end
 
   def new
-    @product_type = ProductsType.new
+    @product_type = ProductType.new
 
   end
 
   def create
-    @product_type = ProductsType.new(product_type_params)
+    @product_type = ProductType.new(product_type_params)
     if @product_type.save
       flash[:notice] = 'Product type created.'
       # session[:return_to] = request.referer
-      redirect_to new_storage_product(storage, product)
+      redirect_to product_types_path
       # czy redirect_to :back?????
     else
       render :new
@@ -32,7 +32,7 @@ class ProductsTypesController < ApplicationController
   def update
     if @product_type.update(product_type_params)
       flash[:notice] = 'Product type updated.'
-      redirect_to products_types_path
+      redirect_to product_types_path
     else
       render :edit
     end
@@ -47,11 +47,11 @@ class ProductsTypesController < ApplicationController
 
   private
   def product_type_params
-    params.require(:products_type).permit(:product_type, :unit)
+    params.require(:product_type).permit(:product_type, :unit)
   end
 
   def set_product_type
-    @product_type = ProductsType.find(params[:id])
+    @product_type = ProductType.find(params[:id])
     # @product_type = ProductsType.find(params[:product_type_id])
   end
 
