@@ -5,18 +5,21 @@ class ProductsTypesController < ApplicationController
   def index
     @product_type = ProductsType.all
   end
+
   def show
   end
 
   def new
     @product_type = ProductsType.new
+
   end
 
   def create
     @product_type = ProductsType.new(product_type_params)
     if @product_type.save
       flash[:notice] = 'Product type created.'
-      redirect_to products_types_path
+      # session[:return_to] = request.referer
+      redirect_to new_storage_product(storage, product)
       # czy redirect_to :back?????
     else
       render :new
@@ -44,7 +47,7 @@ class ProductsTypesController < ApplicationController
 
   private
   def product_type_params
-    params.require(:products_type).permit(:c, :unit)
+    params.require(:products_type).permit(:product_type, :unit)
   end
 
   def set_product_type

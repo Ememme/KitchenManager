@@ -22,13 +22,13 @@
     <%= form.text_area :quantity, id: :quantity %>
   </div>
 
-  
+
 
 
   <br>
   <div class="field">
-    <%= form.label :product_type %><br>
-    <%= form.text_area :product_type, id: :product_type %>
+    <%= form.label :product_type_id, 'Type' %>
+	  <%= form.select(:product_type_id, options_for_select(@types), prompt: 'Select one') %>
     <%= link_to 'Add new type', new_products_type_path %>
   </div>
   <br>

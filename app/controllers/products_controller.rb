@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @types = ProductsType.all.map{ |type| [type.product_type, type.unit] }
     @storage = current_user.storages.find(params[:storage_id])
     @product = @storage.products.new
   end
