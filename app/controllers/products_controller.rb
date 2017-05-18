@@ -5,22 +5,24 @@ class ProductsController < ApplicationController
   before_action :set_storage
 
   def index
-    @products = current_user.products.all
+    @storage = current_user.storages.find(params[:storage_id])
+
+    @products = @storage.products
   end
 
   def new
-    @types = ProductType.all.map{|type| [type.product_type, type.unit] }
+    @types = ProductType.all.map{|type| [type.product_type, type.id] }
     @storage = current_user.storages.find(params[:storage_id])
     @product = @storage.products.new
   end
 
   def create
-    @types = ProductType.all.map{|type| [type.product_type, type.unit] }
+    @types = ProductType.all.map{|type| [type.product_type, type.id] }
     @storage = current_user.storages.find(params[:storage_id])
     @product = @storage.products.new(product_params)
       if @product.save
         flash[:notice] = 'Product was added.'
-        redirect_to storage_products_path(storage)
+        redirect_to storage_products_path(@storage)
       else
         flash[:error] = 'Product cannot be saved'
         render :new
@@ -46,7 +48,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     flash[:notice] = "Product #{@product.product_name} has been deleted."
-    redirect_to storage_product_path(storage, product)
+    redirect_to storage_products_path(@storage)
   end
 
   private

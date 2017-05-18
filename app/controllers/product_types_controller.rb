@@ -42,7 +42,7 @@ class ProductTypesController < ApplicationController
   def destroy
     @product_type.destroy
     flash[:notice] = "Product type has been deleted."
-    redirect_to products_types_path
+    redirect_to product_types_path
   end
 
   private
