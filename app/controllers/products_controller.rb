@@ -53,9 +53,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-
     @product = current_user.products.find(params[:id])
-
   end
 
   def set_storage

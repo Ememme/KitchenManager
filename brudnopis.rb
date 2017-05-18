@@ -8,3 +8,10 @@
   <%= form.label :product_type %><br>
   <%= form.text_area :product_type, id: :product_type %>
 </div>
+
+
+<!-- <div class="field">
+  <%= form.label :unit %><br>
+  <%= form.select(product.products_type, options_for_select(@products_types), prompt: 'Choose one') %>
+
+</div> -->
