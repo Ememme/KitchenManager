@@ -50,3 +50,20 @@ tr.even {
 tr:hover {
   background-color: #c3e6e5;
 }
+
+input[type=submit] {
+  box-shadow: none;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  border: none;
+  margin: 25px 0px 20px;
+  padding: 0px 20px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  background: #72e4e5;
+  width: auto;
+
+}

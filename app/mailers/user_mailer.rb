@@ -10,4 +10,9 @@ class UserMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+
+  def products_expiring
+    @expiring_product = "Hi, remember to use these products shortly!"
+  end
 end

@@ -78,14 +78,4 @@ class ProductsController < ApplicationController
   def set_product_type
     @types = ProductType.all.map{|type| [type.product_type, type.id] }
   end
-
-  def low_stock_info
-    if @product.quantity.zero?
-      shopping_list = []
-      shopping_list << @product
-    else
-      notification_list = []
-      notification_list << @product.product_name
-    end
-  end
 end

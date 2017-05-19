@@ -7,21 +7,7 @@ class SearchController < ApplicationController
 
 private
 
-  def in_stock
-    @storage.products.in_stock
-  end
 
-  def running_low
-    @storage.products.running_low
-  end
-
-  def out_of_stock
-    @storage.products.out_of_stock
-  end
-
-  def consumable
-    @storage.products.consumable
-  end
 
   # sprawdzenie czy produkt nadaje się do spożycia
   def expired?

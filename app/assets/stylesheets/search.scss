@@ -1,3 +1,12 @@
 // Place all the styles related to the Search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ul {
+color:  #black ;
+text-decoration:none;
+}
+
+ul.expires_today {
+color: red;
+
+}

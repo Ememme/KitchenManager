@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :product_type
 
   validates :product_name, presence: true, length: { minimum: 3 }
-  validates :quantity, numericality: true
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
   validates :product_type_id, presence: true
   validate :expiration_date_cannot_be_in_the_past
 
@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   end
 
   scope :expires_soon, -> do
-    where()
+    where('expiration_date =?', Date.today+3)
   end
 
 
@@ -45,6 +45,20 @@ class Product < ApplicationRecord
 
   scope :expires_today, lambda { where('expiration_date = ?', Date.today) }
 
+  def low_stock_info
+    if @product.quantity.zero?
+      shopping_list = []
+      shopping_list << @product
+    else
+      notification_list = []
+      notification_list << @product.product_name
+    end
+  end
 
-
+  def expires_soon
+    if @product.expires_soon
+      eat_quickly = []
+      eat_quickly << @product
+    end
+  end
 end
