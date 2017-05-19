@@ -3,16 +3,21 @@
 <%= link_to 'Available storage', root_path %>
 
 <h1>Products in <%= @storage.storage_name %> </h1>
+<% if @products.blank? %>
+  <h4>There are no products containing the term <%= params[:search] %>.</h4>
+<% end %>
 
 <table>
   <thead>
+    <div id="header">
     <tr>
       <th>Product</th>
       <th>Quantity</th>
-      <th>Unit</th>
       <th>Type</th>
       <th>Expiration date</th>
+      <th>Actions</th>
       <th colspan="5"></th>
+      <div>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +25,6 @@
       <tr>
         <td><%= product.product_name %></td>
         <td><%= product.quantity %></td>
-        <td><%= product.product_type.unit %></td>
         <td><%= product.product_type.product_type %></td>
         <td><%= product.expiration_date %></td>
         <td><%= link_to 'Edit',  edit_storage_product_path(@storage, product) %></td>

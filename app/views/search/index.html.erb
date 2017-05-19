@@ -1,0 +1,23 @@
+<h1>Product Info</h1>
+
+
+<ul>Products that are low on stock:</ul>
+<% @product.running_low each do |info| %>
+  <li>
+  <%= @product.name %> : <%= @product.quantity %> ||
+  </li>
+<% end %>
+
+<ul>Products that will expire soon:</ul>
+<% @product.expires_soon? each do |info| %>
+  <li>
+  <%= @product.name %> : <%= @product.quantity %> ||
+  </li>
+<% end %>
+
+<ul>Products that are not longer on stock :</ul>
+<% @product.out_of_stock each do |info| %>
+  <li>
+  <%= @product.name %> : <%= @product.quantity %> ||
+  </li>
+<% end %>
