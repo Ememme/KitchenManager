@@ -1,0 +1,24 @@
+<h1>Welcome to KitchenManager</h1>
+<% if user_signed_in? %>
+  <%= link_to 'Add new storage place', new_storage_path %>
+  <br>
+    <table>
+    <thead>
+      <tr>
+        <th>Your available storage</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @storages.each do |storage| %>
+        <tr>
+          <td><%= link_to 'Look inside', storage_products_path(storage) %></td>
+          <td><%= storage.storage_name %></td><td><%= link_to 'Add product', new_storage_product_path(storage) %></td>
+          <td><%= link_to 'Search', search_path(storage) %></td>
+          <td><%= link_to 'Edit', edit_storage_path(storage) %> | <%= link_to 'Delete', storage_path(storage), method: :delete, data: { confirm: 'Are you sure you want to delete storage with all the products it contains?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

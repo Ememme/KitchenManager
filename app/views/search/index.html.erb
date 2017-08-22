@@ -1,0 +1,34 @@
+<h1>Product Info</h1>
+
+<ul><strong>Products that expire soon:</strong>
+<% @products.expires_soon.each do |info| %>
+  <li>
+  <%= info.product_name %> : <%= info.quantity %>
+  </li>
+<% end %>
+</ul>
+
+<ul class=expires_today><strong>Products that will expire today:</strong>
+<% @products.expires_today.each do |info| %>
+  <li>
+  <%= info.product_name %> : <%= info.quantity %>
+  </li>
+<% end %>
+</ul>
+<ul><strong>Products running low:</strong>
+<% @products.running_low.each do |info| %>
+  <li>
+  <%= info.product_name %> : <%= info.quantity %>
+  </li>
+<% end %>
+</ul>
+
+<ul><strong>Products that are not longer on stock:</strong>
+<% @products.out_of_stock.each do |info| %>
+  <li>
+  <%= info.product_name %> : <%= info.quantity %>
+  </li>
+<% end %>
+</ul>
+
+<td><%= link_to 'Look inside', storage_products_path(@storage) %></td>
